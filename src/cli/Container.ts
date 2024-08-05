@@ -17,6 +17,7 @@ import {GTFSImportCommand} from "./GTFSImportCommand";
 import {downloadUrl} from "../../config/nfm64";
 import {DownloadFileCommand} from "./DownloadFileCommand";
 import {PromiseSFTP} from "../sftp/PromiseSFTP";
+import { ConsistencyReportCommand } from "./ConsistencyReportCommand";
 
 export class Container {
 
@@ -39,6 +40,7 @@ export class Container {
       case "--get-timetable": return this.getDownloadAndProcessCommand("/timetable/", this.getTimetableImportCommand());
       case "--get-routeing": return this.getDownloadAndProcessCommand("/routing_guide/", this.getRouteingImportCommand());
       case "--get-nfm64": return this.getDownloadAndProcessNFM64Command();
+      case "--consistency-report": return this.consistencyReport();
       default: return this.getShowHelpCommand();
     }
   }
@@ -122,6 +124,11 @@ export class Container {
       await this.getDownloadNFM64Command(),
       await this.getNFM64ImportCommand()
     );
+  }
+
+  @memoize
+  private async consistencyReport(): Promise<ConsistencyReportCommand> {
+    return new ConsistencyReportCommand(await this.getDatabaseConnection());
   }
 
   @memoize

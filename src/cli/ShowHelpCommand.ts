@@ -24,6 +24,7 @@ Import a DTD feed into a MySQL compatible database
   --get-timetable [DIR]      download and process latest timetable refresh from DTD
   --get-routeing [DIR]       download and process latest routeing refresh from DTD
   --get-nfm64 [DIR]          download and process latest nfm64 file
+  --consistency-report       output certain limited consistency-related information
   
 The following environment properties are expected to be set:
   
