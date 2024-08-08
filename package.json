@@ -43,6 +43,7 @@
     "@types/proj4": "^2.5.5",
     "adm-zip": "^0.5.10",
     "byline": "^5.0.0",
+    "csv-stringify": "^6.5.1",
     "csv-write-stream": "^2.0.0",
     "fs-extra": "^11.1.1",
     "memoized-class-decorator": "^1.6.1",
